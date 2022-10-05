@@ -10,7 +10,7 @@
 	<form action="${pageContext.request.contextPath}/board" method="get">
 		<label><input type="text" name="userid" id="id" /></label> 
 		<label><input type="password" name="password" id="pw" /></label>
-		<button>login</button>
+		<button>민지바보</button>
 	</form>
 </body>
 </html>
