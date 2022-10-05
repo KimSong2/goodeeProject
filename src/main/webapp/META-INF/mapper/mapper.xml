@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.goodee.dao.BBSDAO">
+<select id="login" resultType = "userVO">
+	select id, username, userid, password from user
+	<where> 
+		<if test="userid != null">
+			and userid=#{userid}
+		</if>
+		<if test="password != null">
+			and password=#{password}
+		</if>
+	</where>
+</select>
+<select id="getList" resultType="bbsVO">
+	select id, category, title, content, owner, create_date
+	from bbs 
+	order by id desc
+		
+</select>
+<select id="detailList" resultType="bbsVO">
+	select id, category, title, content, owner, create_date
+	from bbs
+	<where>
+		<if test="id != 0">
+			id=#{id}
+		</if>
+	</where>
+</select>
+<insert id="insertList" keyProperty="id">
+	insert into bbs
+	(id, category, title, content, owner, owner_id)
+	values (#{id}, #{category}, #{title}, #{content}, #{owner}, #{ownerId})
+</insert>
+</mapper>
